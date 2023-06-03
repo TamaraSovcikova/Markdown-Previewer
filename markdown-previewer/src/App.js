@@ -1,4 +1,14 @@
 import './App.css';
+import marked from 'marked';
+
+const markdownText = "# Hello there";
+
+const MarkdownComponent = (markdownText) => {  
+  const html = marked(markdownText);
+
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+};
+
 
 
 
@@ -20,6 +30,6 @@ function App() {
       </header>
     </div>
   );
-}
+} 
 
-export default App;
+export { App, MarkdownComponent };
