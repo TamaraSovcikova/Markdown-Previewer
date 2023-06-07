@@ -8,17 +8,18 @@ import { faMoon, faSun, faTint } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const placeholderText = 
-  `# Welcome to the Markup Previewer
+  `# (づ ◕‿◕ )づ 
+## Welcome to the Markup Previewer
+##### This is a project for the Front End Development Libraries Certificate
+[Link](https://freecodecamp.org)
 
-## This is a project for the Front End Development Libraries Certificate
-[Link](https://freecodecamp.org
-
-Inline code: \`console.log("Hello, There!");\`
+Inline Code:
+\`console.log("Hello, There!");\`
 
 Code block:
 \`\`\`
 function greet(name) {
-  console.log(\`Hello, \${name}!\`);
+  console.log(\`Hello, my name is \${name}!\`);
 }
 greet("Tamara");
 \`\`\`
