@@ -1,20 +1,19 @@
 import marked from 'marked';
 import './index.css';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun, faTint } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
-  const placeholderText = `
-# Welcome to the Markup Previewer
+  const placeholderText = 
+  `# Welcome to the Markup Previewer
 
-## This is a my project for
-
+## This is a project for the Front End Development Libraries Certificate
 [Link](https://freecodecamp.org
 
-Inline code: \`console.log("Hello, world!");\`
+Inline code: \`console.log("Hello, There!");\`
 
 Code block:
 \`\`\`
@@ -24,8 +23,9 @@ function greet(name) {
 greet("Tamara");
 \`\`\`
 
+This project was made with:
 - List Love
-- List Dogs
+- List Passion
 - List Coke Zero
 
 > Blockquote: "Be yourself; everyone else is already taken." - Oscar Wilde
@@ -48,28 +48,66 @@ const handleEditorChange = (event) =>{
   setEditorValue(newValue);
   setPreviewValue(markdownText(newValue));
 };
+
+const [theme, setTheme] = useState('dark');
+
+const toggleTheme = (selectedTheme) => {
+  setTheme(selectedTheme);
+};
+
+useEffect(() => {
+  const root = document.documentElement;
+
+  const themes = {
+    dark: {
+      backgroundColor: '#212020',
+      h2Color: '#e1dfe1',
+      buttonColor: '#e1dfe1',
+      buttonIcon: '#454545',
+    },
+    light: {
+      backgroundColor: '#e1dfe1',
+      h2Color: 'black',
+      buttonColor: 'black',
+      buttonIcon: '#e1dfe1',
+      },
+    aqua: {
+      backgroundColor: '#b9d0e1',
+      h2Color: '#445066',     
+      buttonColor: '#e1dfe1;',
+      buttonIcon: '#454545',
+    },
+  };
+
+  const selectedTheme = themes[theme];
+
+  Object.entries(selectedTheme).forEach(([key, value]) => {
+    root.style.setProperty(`--${key}`, value);
+  });
+}, [theme]);
+
   
 
   return (    
    <div className="App">
-      <div className="container">
-        <div className="row">
-          <div className="col-2">
+      <div className="container-fluid">
+        <div className="row no-gutters">
+          <div className="col-1 pl-0  d-flex align-items-center justify-content-center">
             <div className="theme-buttons">
-              <button className="btn btn-light">
+              <button onClick={() => toggleTheme('light')} className="btn btn-light">
                 <FontAwesomeIcon icon={faSun} />
               </button>
-              <button className="btn btn-dark">
+              <button onClick={() => toggleTheme('dark')} className="btn btn-dark">
                 <FontAwesomeIcon icon={faMoon} />
               </button>
-              <button className="btn btn-info">
+              <button onClick={() => toggleTheme('aqua')} className="btn btn-info">
                 <FontAwesomeIcon icon={faTint} />
               </button>
             </div>
           </div>
-          <div className="col">
+          <div className="col-4">
             <div className="half-screen-container">
-              <h2>Editor</h2>
+              <h2 className='head'>Editor</h2>
               <textarea
                 id="editor"
                 className="half-screen-textarea editor"
@@ -78,9 +116,9 @@ const handleEditorChange = (event) =>{
               />
             </div>
           </div>
-          <div className="col">
+          <div className="col-7">
             <div className="half-screen-container">
-              <h2>Preview</h2>
+              <h2 className='head'>Preview</h2>
               <div className="half-screen-textarea preview">{previewValue}</div>
             </div>
           </div>

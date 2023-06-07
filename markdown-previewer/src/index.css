@@ -1,31 +1,51 @@
 :root {
-  --backgroundColor: #000000;
-  --h2-Color: rgb(245, 239, 239);
+  --backgroundColor: #212020;
+  --h2Color: #E1DFE1;
+  --buttonColor: white;
+  --buttonIcon:#454545;
+  --pColor: black;
 }
 
 .App {
-  background-color: var(--backgroundColor);
+  background-color: var(--backgroundColor);  
+}
+p{
+  color: var(--pColor);
+  color: #13223e
+}
+.row{
+  padding-left:0; 
+}
+.col-1{
+  width:fit-content;
+  padding-right: 0;
 }
 
-.App h2 {
-  color: var(--h2-Color);
+.head{
+  color: var(--h2Color);
   margin: 5px auto;
+  font-family: 'RubikPuddle';
+  font-weight: bold;
 }
 
 .theme-buttons {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
 }
 
 .theme-buttons button {
-  background-color: #f5f5f5;
-  color: #454545;
+  background-color: var(--buttonColor);
+  color: var(--buttonIcon);
   border: none;
-  padding: 10px;
+  padding: 10px 10px;
   font-size: 16px;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+
 }
 
 .theme-buttons button:hover {
@@ -56,4 +76,8 @@
   color: #000000;
   overflow-y: auto;
   line-height: 1.5;
+}
+@font-face {
+  font-family: 'RubikPuddle';
+  src: url('./fonts/RubikPuddles-Regular.ttf') format('truetype');
 }
